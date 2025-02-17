@@ -1,0 +1,630 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Linux运维 | Cris Kou的成长日记</title><meta name="keywords" content="Linux"><meta name="author" content="Cris Kou"><meta name="copyright" content="Cris Kou"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Linux运维"><meta name="application-name" content="Linux运维"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="Linux运维"><meta property="og:url" content="http://example.com/2025/02/17/Linux%E8%BF%90%E7%BB%B4/index.html"><meta property="og:site_name" content="Cris Kou的成长日记"><meta property="og:description" content="这里列出一些常用命令（自己不熟悉） find命令：find 目录 参数 文件名称示例：find &amp;#x2F;usr&amp;#x2F;tmp -name &amp;#39;a*&amp;#39;   查找&amp;#x2F;usr&amp;#x2F;tmp目录下的所有以a开头的目录或文件。 VIMvi编辑器的3种模式：分别是命令模式（command mode"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg"><meta property="article:author" content="Cris Kou"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg"><meta name="description" content="这里列出一些常用命令（自己不熟悉） find命令：find 目录 参数 文件名称示例：find &amp;#x2F;usr&amp;#x2F;tmp -name &amp;#39;a*&amp;#39;   查找&amp;#x2F;usr&amp;#x2F;tmp目录下的所有以a开头的目录或文件。 VIMvi编辑器的3种模式：分别是命令模式（command mode"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/2025/02/17/Linux%E8%BF%90%E7%BB%B4/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"不点回来，我！就！要！闹！","backTitle":"列队欢迎大佬！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手"]},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Cris Kou","link":"链接: ","source":"来源: Cris Kou的成长日记","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Cris Kou的成长日记',
+  title: 'Linux运维',
+  postAI: '',
+  pageFillDescription: 'find, VIM, 查看文件, 权限, 文件压缩与解压, 查找命令, grep, find, locate, whereis, which, 网络管理, 主机名配置, IP地址配置, 域名映射, 常用网络命令, ifconfig（net-tools套件中停止维护的命令）, ip（iproute2套件中的命令）, ping, route, lsof, netstat, ss, traceroute, nslookup, tcpdump, arp, 定时任务, 一次性计划任务 – at, 周期性计划任务 – crontab, 进程管理, 进程概念, 进程生命周期, 线程和协程, 进程管理常用命令, ps, top, pgrep, pstree, prtstat, uptime, wampwho, jobs、fgampbg, kill, pkill, lsof, 防火墙这里列出一些常用命令自己不熟悉命令目录参数文件名称示例查找目录下的所有以开头的目录或文件编辑器的种模式分别是命令模式插入模式和底行模式各模式的功能区分如下命令行模式控制屏幕光标的移动字符字或行的删除查找移动复制某区段等删除当前行字符查找字符进入底行模式进入编辑模式编辑模式底行模式将文件保存或退出也可以设置编辑环境如寻找字符串列出行号等查看文件查看文件最后一屏百分比显示可以显示百分比回车下一行空格下一页按退出翻页查看翻页行数查看后行结束权限使用查看文件或目录权限第一位表示文件类型文件夹普通文件软链接类似的快捷方式块设备文件例如硬盘光驱等管道文件字符设备文件例如屏幕等串口设备套接口文件为加上当前用户可执行权限所在组是其他用户是或者八进制法文件压缩与解压一般是打包压缩为包压缩其中表示调用压缩命令进行压缩表示打包文件显示运行过程指定文件名解压压缩包解压路径查找命令命令是一种强大的文本搜索工具举例查找指定服务进程查找指定服务进程排除身查找指定进程个数在目录结构中搜索文件并对搜索结果执行指定的操作在当前目录查找以结尾的文件并显示详细信息查找目录下权限为的文件查找当目录以结尾的普通文件查找当前所有目录并排序查找当前目录大于的文件让使用者可以很快速的搜寻某个路径默认每天自动更新一次所以使用命令查不到最新变动过的文件为了避免这种情况可以在使用之前先使用命令手动更新数据库如果是精简版系统需要安装命令搜索目录下所有以开头的文件查找和相关的所有文件命令是定位可执行文件源代码文件帮助文件在文件系统中的位置这些文件的属性应属于原始代码二进制文件或是帮助文件将和文件相关的文件都查找出来命令的作用是在变量指定的路径中搜索某个系统命令的位置并且返回第一个搜索结果查找命令所在路径查找中的路径网络管理主机名配置地址配置域名映射域名映射文件路径常用网络命令套件中停止维护的命令示例显示网络设备信息启动关闭指定网卡等于设置最大传输单元临时修改建立虚拟网卡网卡别名流量走主网卡单独显示某网卡套件中的命令示例显示网卡设备信息或者查看链路层的状态但是看不到地址显示更全面显示不同网络接口的统计数据查看接入你所在的局域网的设备的地址开启关闭临时修改网卡名称设置网卡别名虚拟网卡给添加地址删除网卡上的设置默认网关为查看路由表条目查看具体路由包从哪里来更改默认路由监控消息命令用于检测主机执行指令会使用传输协议发出要求回应的信息若远端主机的网络功能没有问题就会回应该信息因而得知该主机运作正常命令用于显示和操作路由表是一个查看进程打开的文件的工具示例列出所有打开的文件查看谁正在使用某个文件列出某个用户打开的文件信息列出某个程序所打开的文件信息通过某个进程号显示该进程打开的文件列出所有的网络连接列出所有网络连接信息列出所有网络连接信息列出谁在使用某个端口列出谁在使用某个特定的端口特定的端口用来查看当前操作系统的网络连接状态路由表接口统计等信息来自于工具包是的升级版常用选项参数含义显示主机中所有活动的网络连接信息包括监听非监听状态的服务端口以数字的形式显示相关的主机地址端口等信息显示与网络连接相关联的进程号进程名称信息该选项需要权限显示处于监听状态的网络连接及端口信息查看传输控制协议相关的信息显示用户数据报协议协议相关的信息显示路由表信息显示网卡列表显示组播组的关系显示网络统计信息命令来自于包是的升级版本通过遍历来获取信息使用与内核模块通信获取信息命令可以用于测试从当前主机到目的主机之间经过了哪些网络结点并显示各个中间结点的连接状态响应时间安装域名解析工具执行安装网络数据包截获分析工具详细使用协议是地址解析协议的缩写它的作用是通过目标设备的地址解析为目标设备的地址以此来保证信息的传输他是网络层不可获缺的协议不过在中被邻居发现协议代替缓存就是用来储存地址和地址的缓冲区本质就是一个地址对应地址的对应表命令用于操作主机的缓冲区可以用来显示缓冲区中的所有条目删除指定的条目或者添加静态的地址与地址对应关系定时任务一次性计划任务周期性计划任务是和用于设置定时任务的指令通过命令可以在固定间隔时间执行指定的系统指令或脚本时间间隔的单位可以是分钟小时日月周及以上的任意组合安装启动服务关闭服务重启服务用指定的文件替代目前的编辑列出删除先打开定时任务所在的文件每分钟执行一次命令每晚的重启每月日的重启每周六周日的重启每天至之间每隔分钟重启晚上点到早上点之间每隔一小时重启进程管理进程概念进程是程序在数据集上的一次执行运行中的程序的一个副本是被载入内存的一个指令集合是资源分配的单位进程生命周期线程和协程线程有时被称为轻量级进程是操作系统调度调度执行的最小单位一个进程实际上可以由多个称为线程的执行单元组成每个线程都运行在进程的上下文中并共享同样的代码和全局数据进程的个体间是完全独立的而线程间是彼此依存的多进程环境中任何一个进程的终止不会影响到其他进程而多线程环境中父线程终止全部子线程被迫终止没有了资源查看进程中的线程协程是用户模式下的轻量级线程最准确的名字应该叫用户空间线程协程不是被操作系统内核所管理而是完全由应用程序来控制一个线程可以包含一个或多个协程协程拥有自己的寄存器上下文和栈协程调度切换时将寄存器上下文和栈保存起来在切换回来时恢复先前保运的寄存上下文和栈进程管理常用命令命令用于显示当前进程的状态参数含义显示当前终端下的所有进程信息包括其他用户的进程与选项结合时将显示系统中所有的进程信息使用以用户为主的格式输出进程信息显示当前用户在所有终端下的进程信息显示所有进程使用完整的格式显示进程信息使用长格式显示进程信息常用组合示例上述输出信息中第一行为列表标题其中各字段的含义描述如下启动该进程的用户账号的名称该进程在系统中的数字号在当前系统中是唯一的占用的百分比内存占用的百分比该进程使用的虚拟内存量该进程占用的物理内存量表明该进程在哪个终端上运行不是从终端启动的进程则显示为该进程的状态启动该进程的时间该进程占用的时间启动该进程的命令的名称状态类型不可被唤醒的睡眠状态通常用于情况该进程正在运行该进程处于睡眠状态可被唤醒停止状态可能是在后台暂停或进程处于除错状态内存交互状态从内核开始无效死掉的进程通常不会出现僵尸进程进程已经中止但是部分程序还在内存当中高优先级以下状态在格式中出现低优先级被锁入内存包含子进程多线程位于后台进程占用的百分比各列标题含义内核分配给进程的系统标记进程的状态启动这些进程的用户进程的进程父进程的进程号如果该进程是由另一个进程启动的进程生命周期中的利用率进程的优先级越大的数字代表越低的优先级谦让度值用来参与决定优先级进程的内存地址假如进程被换出所需交换空间的大致大小若该进程在睡眠则显示睡眠中的系统函数名进程启动时的系统时间进程启动时的终端设备代表虚拟终端一般是远程连接的终端代表本地控制台终端运行进程需要的累计时间进程的启动命令指定属性排序以下版本不支持按内存倒序排序使用实用程序执行重复的输出以实现对就程进行实时的监视如下面的命令显示每秒钟的监视查看僵尸进程查找僵死进程然后将父进程杀死用于查看进程动态信息参数含义改变显示的更新速度显示整个命令行而不只是显示命令名通过指定来监控某个进程的状态累积模式会将己完成或消失的子行程的累积起来安全模式将交互式指令取消避免潜在的危机不显示任何闲置或者僵死进程更新的次数完成后将会退出通过特定条件查询进程信息参数含义同时显示进程名和指定父进程号匹配有效用户匹配实际用户匹配列出的进程组匹配真实组指定开启进程的终端当匹配多个进程时显示进程号最小的那个当匹配多个进程时显示进程号最大的那个示例月月月以树形结构显示显示进程的父子关系参数选项选项可以列出完整的命令信息选项使用时可以同时列出对应的号选项可以列出对应的用户名示例系统如无命令执行可以显示进程信息来自于包示例系统负载查询每一栏含义系统当前时间表示系统正在运行是系统启动的总时间当前上线人数系统负载分钟的平均负载一般不会超过超过时建议警报命令与命令可以用来查看当前系统中登录的用户信息这是通过读取文件中的信息来实现的但是并非所有的程序都使用文件来保存登录信息因此系统中实际在线的用户数目可能要比命令与命令的输出多用户数将一个在后台暂停的命令变成继续执行将后台中的命令调至前台继续运行查看当前有多少在后台运行的命令可以将一个正在前台执行的命令放到后台并且暂停命令用于删除进程重新加载进程杀死一个进程正常停止一个进程根据特定条件终止相关进程根据名称杀掉进程是一个查看进程打开的文件的工具防火墙防火墙配置和参考链接命令大全权限管理与用户操作防火墙配置和常用网络命令大全进程和计划任务管理详细使用与命令对比',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-02-17 11:42:59',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Cris Kou的成长日记</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Linux/" style="font-size: 1.05rem;">Linux<sup>1</sup></a><a href="/tags/Python%E5%9F%BA%E7%A1%80/" style="font-size: 1.05rem;">Python基础<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 1.05rem;">学习笔记<sup>1</sup></a><a href="/tags/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" style="font-size: 1.05rem;">测试工具<sup>3</sup></a><a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" style="font-size: 1.05rem;">自动化测试<sup>1</sup></a><a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 1.05rem;">读书笔记<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/02/"><span class="card-archive-list-date">二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">8</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Linux/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Linux</span></a></span></div></div><h1 class="post-title" itemprop="name headline">Linux运维</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-02-17T01:35:17.000Z" title="发表于 2025-02-17 09:35:17">2025-02-17</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-02-17T03:42:59.772Z" title="更新于 2025-02-17 11:42:59">2025-02-17</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为成都"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>成都</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://example.com/2025/02/17/Linux%E8%BF%90%E7%BB%B4/"><header><a href="/tags/Linux/" tabindex="-1" itemprop="url">Linux</a><h1 id="CrawlerTitle" itemprop="name headline">Linux运维</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Cris Kou</span><time itemprop="dateCreated datePublished" datetime="2025-02-17T01:35:17.000Z" title="发表于 2025-02-17 09:35:17">2025-02-17</time><time itemprop="dateCreated datePublished" datetime="2025-02-17T03:42:59.772Z" title="更新于 2025-02-17 11:42:59">2025-02-17</time></header><p>这里列出一些常用命令（自己不熟悉）</p>
+<h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><p>命令：<code>find 目录 参数 文件名称</code><br>示例：<code>find /usr/tmp -name &#39;a*&#39;</code>   查找&#x2F;usr&#x2F;tmp目录下的所有以a开头的目录或文件。</p>
+<h2 id="VIM"><a href="#VIM" class="headerlink" title="VIM"></a>VIM</h2><p>vi编辑器的3种模式：分别是命令模式（command mode）、插入模式（Insert mode）和底行模式（last line mode），各模式的功能区分如下：</p>
+<ol>
+<li><p>命令行模式</p>
+<p>控制屏幕光标的移动，字符、字或行的删除，查找，移动复制某区段等。</p>
+<p><code>dd</code>：删除当前行</p>
+<p><code>/字符</code>：查找字符</p>
+<p><code>:</code>：进入底行模式</p>
+<p><code>i\o\a</code>：进入编辑模式</p>
+</li>
+<li><p>编辑模式</p>
+</li>
+<li><p>底行模式</p>
+<p>  将文件保存或退出vi，也可以设置编辑环境，如寻找字符串、列出行号……等。</p>
+</li>
+</ol>
+<h2 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h2><p><code>cat</code>：查看文件最后一屏</p>
+<p><code>more</code>：百分比显示，可以显示百分比，回车下一行，空格下一页，按 q 退出。</p>
+<p><code>less</code>：翻页查看，PageUp&#x2F;PageDown翻页</p>
+<p><code>tail -行数</code>：查看后n行，Ctrl + C结束</p>
+<h2 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h2><p>使用<code>ll</code>查看文件或目录权限，第一位表示文件类型：</p>
+<blockquote>
+<p>d：文件夹<br>-：普通文件<br>l：软链接（类似Windows的快捷方式）<br>b：块设备文件（例如硬盘、光驱等）<br>p：管道文件<br>c：字符设备文件（例如屏幕等串口设备）<br>s：套接口文件</p>
+</blockquote>
+<p><code>chmod u+x aaa.txt</code>：为aaa.txt加上当前用户可执行权限（所在组是 g ，其他用户是 o）。</p>
+<p>或者八进制421法：<code>chmod 777 aaa.txt</code></p>
+<h2 id="文件压缩与解压"><a href="#文件压缩与解压" class="headerlink" title="文件压缩与解压"></a>文件压缩与解压</h2><p>一般是打 tar 包，压缩为 gzip 包。</p>
+<ol>
+<li><p>压缩</p>
+<p><code>tar -zcvf</code>：其中，z 表示调用 gzip 压缩命令进行压缩，c 表示打包文件，v 显示运行过程，f 指定文件名。</p>
+</li>
+<li><p>解压</p>
+</li>
+</ol>
+<p>​		<code>tar -zxvf 压缩包 -C 解压路径</code></p>
+<h2 id="查找命令"><a href="#查找命令" class="headerlink" title="查找命令"></a>查找命令</h2><h3 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h3><p>grep命令是一种强大的文本搜索工具，举例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep sshd  查找指定ssh服务进程 </span><br><span class="line">ps -ef | grep sshd | grep -v grep 查找指定服务进程，排除gerp身 </span><br><span class="line">ps -ef | grep sshd -c 查找指定进程个数</span><br></pre></td></tr></table></figure>
+
+<h3 id="find-1"><a href="#find-1" class="headerlink" title="find"></a>find</h3><p>在目录结构中搜索文件，并对搜索结果执行指定的操作。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;*.log&quot; -ls  在当前目录查找以.log结尾的文件，并显示详细信息。 </span><br><span class="line">find /root/ -perm 600   查找/root/目录下权限为600的文件 </span><br><span class="line">find . -type f -name &quot;*.log&quot;  查找当目录，以.log结尾的普通文件 </span><br><span class="line">find . -type d | sort   查找当前所有目录并排序 </span><br><span class="line">find . -size +100M  查找当前目录大于100M的文件</span><br></pre></td></tr></table></figure>
+
+<h3 id="locate"><a href="#locate" class="headerlink" title="locate"></a>locate</h3><p>locate 让使用者可以<strong>很快速的搜寻某个路径</strong>。默认每天自动更新一次，所以使用locate 命令查不到最新变动过的文件。为了避免这种情况，可以在使用locate之前，先使用updatedb命令，手动更新数据库。</p>
+<p>如果是精简版CentOS系统需要安装locate命令：<code>yum -y install mlocate</code> 。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">updatedb</span><br><span class="line">locate /etc/sh 搜索etc目录下所有以sh开头的文件 </span><br><span class="line">locate pwd 查找和pwd相关的所有文件</span><br></pre></td></tr></table></figure>
+
+<h3 id="whereis"><a href="#whereis" class="headerlink" title="whereis"></a>whereis</h3><p>whereis命令是<strong>定位可执行文件、源代码文件、帮助文件</strong>在文件系统中的位置。这些文件的属性应属于原始代码，二进制文件，或是帮助文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis ls    将和ls文件相关的文件都查找出来</span><br></pre></td></tr></table></figure>
+
+<h3 id="which"><a href="#which" class="headerlink" title="which"></a>which</h3><p>which命令的作用是<strong>在PATH变量指定的路径</strong>中，搜索某个<strong>系统命令</strong>的位置，并且返回第一个搜索结果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">which pwd  查找pwd命令所在路径 </span><br><span class="line">which java  查找path中java的路径 </span><br></pre></td></tr></table></figure>
+
+<h2 id="网络管理"><a href="#网络管理" class="headerlink" title="网络管理"></a>网络管理</h2><h3 id="主机名配置"><a href="#主机名配置" class="headerlink" title="主机名配置"></a>主机名配置</h3><p><code>vi /etc/sysconfig/network</code></p>
+<h3 id="IP地址配置"><a href="#IP地址配置" class="headerlink" title="IP地址配置"></a>IP地址配置</h3><p><code>vi /etc/sysconfig/network-scripts/ifcfg-eth0</code></p>
+<h3 id="域名映射"><a href="#域名映射" class="headerlink" title="域名映射"></a>域名映射</h3><p><code>vi /etc/hosts</code></p>
+<blockquote>
+<p>windows域名映射文件路径：C:\Windows\System32\drivers\etc\hosts</p>
+</blockquote>
+<h3 id="常用网络命令"><a href="#常用网络命令" class="headerlink" title="常用网络命令"></a>常用网络命令</h3><h4 id="ifconfig（net-tools套件中停止维护的命令）"><a href="#ifconfig（net-tools套件中停止维护的命令）" class="headerlink" title="ifconfig（net-tools套件中停止维护的命令）"></a>ifconfig（net-tools套件中停止维护的命令）</h4><p> 示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#显示网络设备信息</span><br><span class="line">ifconfig  </span><br><span class="line">#启动关闭指定网卡</span><br><span class="line">ifconfig eth0 down/up	等于   ifdown/ifup eth0</span><br><span class="line">#设置最大传输单元</span><br><span class="line">ifconfig eth0 mtu 1500 </span><br><span class="line">#临时修改 IP</span><br><span class="line">ifconfig ens33 192.168.10.20/24</span><br><span class="line">#建立虚拟网卡(网卡别名)，流量走主网卡</span><br><span class="line">ifconfig ens33:0 192.168.10.21</span><br><span class="line">ifconfig ens33:1 192.168.10.22</span><br><span class="line">#单独显示某网卡</span><br><span class="line">ifconfig eth0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="ip（iproute2套件中的命令）"><a href="#ip（iproute2套件中的命令）" class="headerlink" title="ip（iproute2套件中的命令）"></a>ip（iproute2套件中的命令）</h4><p> 示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#显示网卡设备信息</span><br><span class="line">ip a	或者   ip addr show</span><br><span class="line">#查看链路层的状态，但是看不到 ip 地址</span><br><span class="line">ip link</span><br><span class="line">ip -s link	#显示更全面，显示不同网络接口的统计数据</span><br><span class="line">#查看接入你所在的局域网的设备的 MAC 地址</span><br><span class="line">ip neighbour</span><br><span class="line">#开启/关闭 eth0</span><br><span class="line">ip link set eth0 up/down</span><br><span class="line">#临时修改网卡名称</span><br><span class="line">ip link set eth1 name syhjnet</span><br><span class="line">#设置网卡别名（虚拟网卡）</span><br><span class="line">ip addr add 172.16.100.100/16 dev eth0 label eth0:0</span><br><span class="line">ip addr del 172.16.100.100/16 dev eth0 label eth0:0</span><br><span class="line">#给 eth0 添加 IP 地址</span><br><span class="line">ip addr add 20.0.0.19/24 dev eth0</span><br><span class="line">#删除 eth0 网卡上的 IP</span><br><span class="line">ip addr del 20.0.0.19/24 dev eth0</span><br><span class="line">ip addr flush dev eth0</span><br><span class="line">#设置 eth0 默认网关为 192.168.0.2</span><br><span class="line">ip route add default via 20.0.0.2 dev eth0</span><br><span class="line">#查看路由表条目</span><br><span class="line">ip route show</span><br><span class="line">#查看具体 IP 路由包从哪里来</span><br><span class="line">ip route get 20.0.0.19</span><br><span class="line">#更改默认路由</span><br><span class="line">ip route add default via 20.0.0.196</span><br><span class="line">#监控 netlink 消息</span><br><span class="line">ip monitor all</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="ping"><a href="#ping" class="headerlink" title="ping"></a>ping</h4><p>ping 命令用于检测主机，执行 ping 指令会使用 ICMP 传输协议，发出要求回应的信息，若远端主机的网络功能没有问题，就会回应该信息，因而得知该主机运作正常。</p>
+<h4 id="route"><a href="#route" class="headerlink" title="route"></a>route</h4><p>route 命令用于显示和操作 IP 路由表。</p>
+<h4 id="lsof"><a href="#lsof" class="headerlink" title="lsof"></a>lsof</h4><p>lsof（list open files）是一个查看进程打开的文件的工具</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#列出所有打开的文件:</span><br><span class="line">lsof</span><br><span class="line">#查看谁正在使用某个文件</span><br><span class="line">lsof /path/file</span><br><span class="line">#列出某个用户打开的文件信息</span><br><span class="line">lsof -u username</span><br><span class="line">#列出某个程序所打开的文件信息</span><br><span class="line">lsof -c mysql</span><br><span class="line">#通过某个进程号显示该进程打开的文件</span><br><span class="line">lsof -p 1</span><br><span class="line">#列出所有的网络连接</span><br><span class="line">lsof -i</span><br><span class="line">#列出所有 tcp 网络连接信息</span><br><span class="line">lsof -i tcp</span><br><span class="line">#列出所有 udp 网络连接信息</span><br><span class="line">lsof -i udp</span><br><span class="line">#列出谁在使用某个端口</span><br><span class="line">lsof -i:3306</span><br><span class="line">#列出谁在使用某个特定的 udp 端口</span><br><span class="line">lsof -i udp:55</span><br><span class="line">#特定的tcp端口</span><br><span class="line">lsof -i tcp:80</span><br></pre></td></tr></table></figure>
+
+<h4 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h4><p>netstat 用来查看当前操作系统的网络连接状态、路由表、接口统计等信息，来自于 net-tools 工具包，ss 是 netstat 的升级版。</p>
+<p>常用选项</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat [-anpt] [-anpu] [-anptu] [-anpltu] [-ntlp]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参数	含义<br>-a	显示主机中所有活动的网络连接信息 (包括监听、非监听状态的服务端口)<br>-n	以数字的形式显示相关的主机地址、端口等信息<br>-p	显示与网络连接相关联的进程号、进程名称信息 (该选项需要 root 权限)<br>-l	显示处于监听 (Listen) 状态的网络连接及端口信息<br>-t	查看 TCP (Transmission Control Protocol，传输控制协议) 相关的信息<br>-u	显示 UDP (User Datagram Protocol，用户数据报协议) 协议相关的信息<br>-r	显示路由表信息<br>-i	显示网卡列表<br>-g	显示组播组的关系<br>-s	显示网络统计信息</p>
+</blockquote>
+<h4 id="ss"><a href="#ss" class="headerlink" title="ss"></a>ss</h4><p>ss 命令来自于 iproute 包，是 netstat 的升级版本。netstat 通过遍历 &#x2F;proc 来获取 socket 信息，ss 使用 netlink 与内核 tcp_diag 模块通信获取 socket 信息。</p>
+<h4 id="traceroute"><a href="#traceroute" class="headerlink" title="traceroute"></a>traceroute</h4><p>raceroute 命令可以用于测试从当前主机到目的主机之间经过了哪些网络结点，并显示各个中间结点的连接状态（响应时间）。 <code>yum -y install traceroute</code> 安装。</p>
+<h4 id="nslookup"><a href="#nslookup" class="headerlink" title="nslookup"></a>nslookup</h4><p>域名解析工具，执行 yum -y install bind-utils 安装。</p>
+<h4 id="tcpdump"><a href="#tcpdump" class="headerlink" title="tcpdump"></a>tcpdump</h4><p>网络数据包截获分析工具。</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lvdongjie/p/10911564.html">详细使用</a></p>
+<h4 id="arp"><a href="#arp" class="headerlink" title="arp"></a>arp</h4><blockquote>
+<p>arp协议：是（Address Resolution Protocol）地址解析协议的缩写。它的作用是通过目标设备的ip地址，解析为目标设备的mac地址，以此来保证信息的传输。他是ipv4<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E7%BD%91%E7%BB%9C%E5%B1%82&spm=1001.2101.3001.7020">网络层</a>不可获缺的协议，不过在ipv6中被ndp（邻居发现协议）代替。</p>
+<p>arp缓存就是用来储存ip地址和mac地址的缓冲区，本质就是一个IP地址对应mac地址的对应表。</p>
+</blockquote>
+<p>arp 命令用于操作主机的 arp 缓冲区，可以用来显示 arp 缓冲区中的所有条目、删除指定的条目或者添加静态的 ip 地址与 MAC 地址对应关系。</p>
+<h2 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h2><h3 id="一次性计划任务-–-at"><a href="#一次性计划任务-–-at" class="headerlink" title="一次性计划任务 – at"></a>一次性计划任务 – at</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@c7-1 ~]#at 12:34 2021-08-18</span><br><span class="line"><span class="meta prompt_">at&gt; </span><span class="language-bash"><span class="built_in">echo</span> <span class="string">&quot;hello world&quot;</span> &gt; /root/test.txt</span></span><br><span class="line"><span class="meta prompt_">at&gt; </span><span class="language-bash">&lt;EOT&gt;</span></span><br><span class="line">job 4 at Wed Aug 18 12:34:00 2021</span><br></pre></td></tr></table></figure>
+
+<h3 id="周期性计划任务-–-crontab"><a href="#周期性计划任务-–-crontab" class="headerlink" title="周期性计划任务 – crontab"></a>周期性计划任务 – crontab</h3><p>crontab是Unix和Linux用于设置定时任务的指令。通过crontab命令，可以在固定间隔时间,执行指定的系统指令或shell脚本。时间间隔的单位可以是分钟、小时、日、月、周及以上的任意组合。<code>yum install crontabs</code>安装。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service crond start   ## 启动服务 </span><br><span class="line">service crond stop    ## 关闭服务 </span><br><span class="line">service crond restart ## 重启服务</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crontab file [-u user] ## 用指定的文件替代目前的crontab</span><br><span class="line">crontab [-u user] [ -e编辑 | -l列出 | -r删除 ]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">先打开定时任务所在的文件：</span><br><span class="line">crontab -e</span><br><span class="line"> </span><br><span class="line">每分钟执行一次date命令 </span><br><span class="line">*/1 * * * * date &gt;&gt; /root/date.txt</span><br><span class="line">每晚的21:30重启apache。 </span><br><span class="line">30 21 * * * service httpd restart</span><br><span class="line">每月1、10、22日的4 : 45重启apache。  </span><br><span class="line">45 4 1,10,22 * * service httpd restart</span><br><span class="line"> </span><br><span class="line">每周六、周日的1 : 10重启apache。 </span><br><span class="line">10 1 * * 6,0 service httpd restart</span><br><span class="line">每天18 : 00至23 : 00之间每隔30分钟重启apache。</span><br><span class="line">0,30   18-23    *   *   *   service httpd restart</span><br><span class="line">晚上11点到早上7点之间，每隔一小时重启apache</span><br><span class="line">*  23-7/1    *   *   *   service httpd restart</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h2><h3 id="进程概念"><a href="#进程概念" class="headerlink" title="进程概念"></a>进程概念</h3><p>Process: 进程是程序在数据集上的一次执行，运行中的程序的一个副本，是被载入内存的一个指令<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E9%9B%86%E5%90%88&spm=1001.2101.3001.7020">集合</a>，是资源分配的单位。</p>
+<h3 id="进程生命周期"><a href="#进程生命周期" class="headerlink" title="进程生命周期"></a>进程生命周期</h3><h3 id="线程和协程"><a href="#线程和协程" class="headerlink" title="线程和协程"></a>线程和协程</h3><p>线程：有时被称为轻量级进程，是操作系统调度（CPU调度）执行的最小单位。一个进程实际上可以由多个称为线程的执行单元组成，每个线程都运行在进程的上下文中，并共享同样的代码和全局数据。进程的个体间是完全独立的，而线程间是彼此依存的。多进程环境中，任何一个进程的终止，不会影响到其他进程。而多线程环境中，父线程终止，全部子线程被迫终止(没有了资源)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#查看进程中的线程</span><br><span class="line">cat /proc/PID/status |grep -i threads</span><br></pre></td></tr></table></figure>
+
+<p>协程：是用户模式下的轻量级线程，最准确的名字应该叫用户空间线程（User Space Thread）。协程不是被操作系统内核所管理，而是完全由应用程序来控制。一个线程可以包含一个或多个协程，协程拥有自己的寄存器上下文和栈，协程调度切换时，将寄存器上下文和栈保存起来，在切换回来时恢复先前保运的寄存上下文和栈。</p>
+<h3 id="进程管理常用命令"><a href="#进程管理常用命令" class="headerlink" title="进程管理常用命令"></a>进程管理常用命令</h3><h4 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h4><p>（process status）命令用于显示当前进程的状态。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-a</td>
+<td>显示当前终端下的所有进程信息，包括其他用户的进程。与“x”选项结合时将显示系统中所有的进程信息</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>使用以用户为主的格式输出进程信息</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>显示当前用户在所有终端下的进程信息</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>显示所有进程</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>使用完整的格式显示进程信息</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>使用长格式显示进程信息</td>
+</tr>
+</tbody></table>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">常用组合：</span><br><span class="line">ps [-aux] [-ef] [-elf]</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">[root@c7-1 ~]#ps -aux</span><br><span class="line">USER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</span><br><span class="line">root          1  0.0  0.1 191004  3916 ?        Ss   10:53   0:03 /usr/lib/systemd/systemd --switched-root --system --deserialize 22</span><br><span class="line">root          2  0.0  0.0      0     0 ?        S    10:53   0:00 [kthreadd]</span><br><span class="line">root          4  0.0  0.0      0     0 ?        S&lt;   10:53   0:00 [kworker/0:0H]</span><br><span class="line">root          5  0.0  0.0      0     0 ?        S    10:53   0:01 [kworker/u256:0]</span><br><span class="line">......</span><br><span class="line">#上述输出信息中，第一行为列表标题，其中各字段的含义描述如下</span><br><span class="line">USER：启动该进程的用户账号的名称</span><br><span class="line">PID：该进程在系统中的数字 ID 号，在当前系统中是唯一的</span><br><span class="line">%CPU：CPU 占用的百分比</span><br><span class="line">%MEM：内存占用的百分比</span><br><span class="line">VSZ：该进程使用的虚拟内存量(KB)</span><br><span class="line">RSS：该进程占用的物理内存量(KB)</span><br><span class="line">TTY：表明该进程在哪个终端上运行。不是从终端启动的进程则显示为?</span><br><span class="line">STAT：该进程的状态</span><br><span class="line">START：启动该进程的时间</span><br><span class="line">TIME：该进程占用的 CPU 时间</span><br><span class="line">COMMAND：启动该进程的命令的名称</span><br><span class="line">#STAT 状态类型</span><br><span class="line">-D：不可被唤醒的睡眠状态，通常用于 I/O 情况</span><br><span class="line">-R：该进程正在运行</span><br><span class="line">-S：该进程处于睡眠状态，可被唤醒</span><br><span class="line">-T：停止状态，可能是在后台暂停或进程处于除错状态</span><br><span class="line">-W：内存交互状态（从 2.6 内核开始无效）</span><br><span class="line">-X：死掉的进程（通常不会出现）</span><br><span class="line">-Z：僵尸进程。进程已经中止，但是部分程序还在内存当中</span><br><span class="line">-&lt;：高优先级（以下状态在 BSD 格式中出现）</span><br><span class="line">-N：低优先级</span><br><span class="line">-L：被锁入内存</span><br><span class="line">-s：包含子进程</span><br><span class="line">-l：多线程</span><br><span class="line">-+：位于后台</span><br><span class="line">-C：进程占用 CPU 的百分比</span><br><span class="line"></span><br><span class="line">[root@c7-1 ~]#ps -elf</span><br><span class="line">F S UID         PID   PPID  C PRI  NI ADDR SZ WCHAN  STIME TTY          TIME CMD</span><br><span class="line">4 S root          1      0  0  80   0 - 47751 ep_pol 10:53 ?        00:00:03 /usr/lib/systemd/systemd --switched-root --system --deserialize 22</span><br><span class="line">1 S root          2      0  0  80   0 -     0 kthrea 10:53 ?        00:00:00 [kthreadd]</span><br><span class="line">1 S root          4      2  0  60 -20 -     0 worker 10:53 ?        00:00:00 [kworker/0:0H]</span><br><span class="line">1 S root          5      2  0  80   0 -     0 worker 10:53 ?        00:00:01 [kworker/u256:0]</span><br><span class="line">1 S root          6      2  0  80   0 -     0 smpboo 10:53 ?        00:00:00 [ksoftirqd/0]</span><br><span class="line">......</span><br><span class="line">#各列标题含义</span><br><span class="line">F：内核分配给进程的系统标记</span><br><span class="line">S：进程的状态</span><br><span class="line">UID：启动这些进程的用户</span><br><span class="line">PID：进程的进程 ID</span><br><span class="line">PPID：父进程的进程号(如果该进程是由另一个进程启动的)</span><br><span class="line">C：进程生命周期中的 CPU 利用率</span><br><span class="line">PRI：进程的优先级(越大的数字代表越低的优先级)</span><br><span class="line">NI：谦让度值用来参与决定优先级</span><br><span class="line">ADDR：进程的内存地址</span><br><span class="line">SZ：假如进程被换出，所需交换空间的大致大小</span><br><span class="line">WCHAN：若该进程在睡眠，则显示睡眠中的系统函数名</span><br><span class="line">STIME：进程启动时的系统时间</span><br><span class="line">TTY：进程启动时的终端设备（pts 代表虚拟终端，一般是远程连接的终端;tty 代表本地控制台终端）</span><br><span class="line">TIME：运行进程需要的累计CPU时间</span><br><span class="line">CMD：进程的启动命令</span><br><span class="line"></span><br><span class="line">#指定属性排序，CentOS6 以下版本不支持</span><br><span class="line">ps axo pid,cmd,%cpu,%mem k -%cpu</span><br><span class="line"></span><br><span class="line">#按内存倒序排序</span><br><span class="line">ps axo pid,cmd,%cpu,%mem --sort -%mem</span><br><span class="line"></span><br><span class="line">#使用watch实用程序执行重复的输出以实现对就程进行实时的监视，如下面的命令显示每秒钟的监视</span><br><span class="line">watch -n 1 &#x27;ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head&#x27;</span><br><span class="line"></span><br><span class="line">#查看僵尸进程</span><br><span class="line">ps -A -o stat,ppid,pid,cmd | grep -e &#x27;^[Zz]&#x27;</span><br><span class="line"></span><br><span class="line">#查找僵死进程，然后将父进程杀死</span><br><span class="line">ps -A -o stat,ppid,pid,cmd | grep -e &#x27;^[Zz]&#x27; | awk &#x27;&#123;print $2&#125;&#x27; | xargs kill -9</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="top"><a href="#top" class="headerlink" title="top"></a>top</h4><p>用于查看进程动态信息。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>d</td>
+<td>改变显示的更新速度</td>
+</tr>
+<tr>
+<td>c</td>
+<td>显示整个命令行而不只是显示命令名</td>
+</tr>
+<tr>
+<td>p</td>
+<td>通过指定 PID 来监控某个进程的状态</td>
+</tr>
+<tr>
+<td>S</td>
+<td>累积模式，会将己完成或消失的子行程的 CPU time 累积起来</td>
+</tr>
+<tr>
+<td>s</td>
+<td>安全模式，将交互式指令取消, 避免潜在的危机</td>
+</tr>
+<tr>
+<td>i</td>
+<td>不显示任何闲置或者僵死进程</td>
+</tr>
+<tr>
+<td>n</td>
+<td>更新的次数，完成后将会退出 top</td>
+</tr>
+</tbody></table>
+<h4 id="pgrep"><a href="#pgrep" class="headerlink" title="pgrep"></a>pgrep</h4><p>通过特定条件查询进程信息。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-l</td>
+<td>同时显示进程名和 PID</td>
+</tr>
+<tr>
+<td>-P</td>
+<td>指定父进程号</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>匹配有效用户 ID</td>
+</tr>
+<tr>
+<td>-U</td>
+<td>匹配实际用户 ID</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>匹配列出的进程组 ID</td>
+</tr>
+<tr>
+<td>-G</td>
+<td>匹配真实组 ID</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>指定开启进程的终端</td>
+</tr>
+<tr>
+<td>-o</td>
+<td>当匹配多个进程时，显示进程号最小的那个</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>当匹配多个进程时，显示进程号最大的那个</td>
+</tr>
+</tbody></table>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@c7-1 ~]#pgrep -l sshd</span><br><span class="line">3471 sshd</span><br><span class="line">4172 sshd</span><br><span class="line">[root@c7-1 ~]#ps aux|grep sshd</span><br><span class="line">root       3471  0.0  0.1 112920  4320 ?        Ss   8月17   0:00 /usr/sbin/sshd -D</span><br><span class="line">root       4172  0.0  0.1 161532  6076 ?        Ss   8月17   0:00 sshd: root@pts/1</span><br><span class="line">root       4644  0.0  0.0 112728   972 pts/1    T    8月17   0:00 grep --color=auto sshd</span><br><span class="line">root       4693  0.0  0.0 112728   968 pts/1    S+   00:25   0:00 grep --color=auto sshd</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="pstree"><a href="#pstree" class="headerlink" title="pstree"></a>pstree</h4><p>以树形结构显示显示进程的父子关系。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>选项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-a</td>
+<td>选项可以列出完整的命令信息</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>选项使用时可以同时列出对应的 PID 号</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>选项可以列出对应的用户名</td>
+</tr>
+</tbody></table>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">系统如无 pstree 命令执行 yum -y install psmisc</span></span><br><span class="line">[root@c6-1 ~]#pstree -aup root</span><br><span class="line">init,1</span><br><span class="line">  ├─NetworkManager,1731 --pid-file=/var/run/NetworkManager/NetworkManager.pid</span><br><span class="line">  ├─abrtd,2078</span><br><span class="line">  ├─acpid,1846</span><br><span class="line">  ├─atd,2120</span><br><span class="line">  ├─auditd,1612</span><br><span class="line">......</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="prtstat"><a href="#prtstat" class="headerlink" title="prtstat"></a>prtstat</h4><p>可以显示进程信息,来自于 psmisc 包</p>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@c7-1 ~]#prtstat -r 1</span><br><span class="line">         pid: 1              	                  comm: systemd</span><br><span class="line">       state: S              	                  ppid: 0</span><br><span class="line">        pgrp: 1              	               session: 1</span><br><span class="line">      tty_nr: 0              	                 tpgid: -1</span><br><span class="line">       flags: 402100         	                minflt: 17726</span><br><span class="line">     cminflt: 1388146        	                majflt: 55</span><br><span class="line">......</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="uptime"><a href="#uptime" class="headerlink" title="uptime"></a>uptime</h4><p>系统负载查询</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@c7-1 ~]#uptime</span><br><span class="line"> 08:50:36 up 14:17,  1 user,  load average: 0.00, 0.01, 0.05</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">每一栏含义</span></span><br><span class="line">系统当前时间 </span><br><span class="line">up表示系统正在运行 </span><br><span class="line">14:17是系统启动的总时间 </span><br><span class="line">当前上线人数</span><br><span class="line">系统负载：1、5、15分钟的平均负载，一般不会超过1，超过5时建议警报</span><br></pre></td></tr></table></figure>
+
+<h4 id="w-who"><a href="#w-who" class="headerlink" title="w&amp;who"></a>w&amp;who</h4><p>w 命令与 who 命令可以用来查看当前系统中登录的用户信息，这是通过读取 &#x2F;var&#x2F;run&#x2F;utmp 文件中的信息来实现的。但是并非所有的程序都使用 &#x2F;var&#x2F;run&#x2F;utmp 文件来保存登录信息，因此<strong>系统中实际在线的用户数目可能要比 w 命令与 who 命令的输出多</strong>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@c7-1 ~]#w</span><br><span class="line"> 09:05:57 up 14:33,  1 user,  load average: 0.02, 0.03, 0.05</span><br><span class="line">USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT</span><br><span class="line">root     pts/0    20.0.0.1         08:27    5.00s  0.03s  0.00s w</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@c7-1 ~]#who</span><br><span class="line">root     pts/0        2021-08-18 08:27 (20.0.0.1)</span><br><span class="line">[root@c7-1 ~]#who -q</span><br><span class="line">root</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">用户数=1</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="jobs、fg-bg"><a href="#jobs、fg-bg" class="headerlink" title="jobs、fg&amp;bg"></a>jobs、fg&amp;bg</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">bg</span><br><span class="line">将一个在后台暂停的命令变成继续执行</span><br><span class="line">fg</span><br><span class="line">将后台中的命令调至前台继续运行</span><br><span class="line">jobs</span><br><span class="line">查看当前有多少在后台运行的命令</span><br><span class="line">ctrl + z</span><br><span class="line">可以将一个正在前台执行的命令放到后台，并且暂停</span><br></pre></td></tr></table></figure>
+
+<h4 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h4><p>kill 命令用于删除进程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 (HUP)：重新加载进程</span><br><span class="line">9 (KILL)：杀死一个进程</span><br><span class="line">15 (TERM)：正常停止一个进程</span><br></pre></td></tr></table></figure>
+
+<h4 id="pkill"><a href="#pkill" class="headerlink" title="pkill"></a>pkill</h4><p>根据特定条件终止相关进程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkill httpd	#根据名称杀掉 httpd 进程</span><br></pre></td></tr></table></figure>
+
+<h4 id="lsof-1"><a href="#lsof-1" class="headerlink" title="lsof"></a>lsof</h4><p>lsof（list open files）是一个查看进程打开的文件的工具。</p>
+<h2 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_49864110/article/details/129150960?ops_request_misc=%257B%2522request%255Fid%2522%253A%25220e0112c3019764349b5f1e287ab31d19%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=0e0112c3019764349b5f1e287ab31d19&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-129150960-null-null.142%5Ev101%5Epc_search_result_base7&utm_term=linux%E9%98%B2%E7%81%AB%E5%A2%99&spm=1018.2226.3001.4187">Linux 防火墙配置（iptables和firewalld）</a></p>
+<p>参考链接：</p>
+<p>【1】<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_23329167/article/details/83856430?ops_request_misc=%257B%2522request%255Fid%2522%253A%25227f16b1637628197d0db590ea8f02bb51%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=7f16b1637628197d0db590ea8f02bb51&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-83856430-null-null.142%5Ev101%5Epc_search_result_base7&utm_term=linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4&spm=1018.2226.3001.4187">Linux命令大全</a></p>
+<p>【2】<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45423515/article/details/126652740?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522c3adc194841047022737cf8974d1290a%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=c3adc194841047022737cf8974d1290a&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-126652740-null-null.142%5Ev101%5Epc_search_result_base7&utm_term=linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90&spm=1018.2226.3001.4187">Linux权限管理与用户操作</a></p>
+<p>【3】<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_49864110/article/details/129150960?ops_request_misc=%257B%2522request%255Fid%2522%253A%25220e0112c3019764349b5f1e287ab31d19%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=0e0112c3019764349b5f1e287ab31d19&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-129150960-null-null.142%5Ev101%5Epc_search_result_base7&utm_term=linux%E9%98%B2%E7%81%AB%E5%A2%99&spm=1018.2226.3001.4187">Linux 防火墙配置（iptables和firewalld）</a></p>
+<p>【4】<a target="_blank" rel="noopener" href="https://blog.csdn.net/shenyuanhaojie/article/details/119899419?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522a32151901a3aa0c5fb22b56a4f7bab1d%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=a32151901a3aa0c5fb22b56a4f7bab1d&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-7-119899419-null-null.142%5Ev101%5Epc_search_result_base7&utm_term=linux%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8&spm=1018.2226.3001.4187">Linux 常用网络命令大全</a></p>
+<p>【5】<a target="_blank" rel="noopener" href="https://blog.csdn.net/shenyuanhaojie/article/details/119749037">Linux 进程和计划任务管理</a></p>
+<p>【6】<a target="_blank" rel="noopener" href="https://www.cnblogs.com/lvdongjie/p/10911564.html">tcpdump详细使用</a></p>
+<p>【7】<a target="_blank" rel="noopener" href="https://blog.csdn.net/Longyu_wlz/article/details/107282039?ops_request_misc=%257B%2522request%255Fid%2522%253A%252212271ab263e584f34cfdc1aa9decff94%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=12271ab263e584f34cfdc1aa9decff94&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-107282039-null-null.142%5Ev101%5Epc_search_result_base7&utm_term=w%E5%91%BD%E4%BB%A4%E5%92%8Cwho%E5%91%BD%E4%BB%A4%E7%9A%84%E5%8C%BA%E5%88%AB&spm=1018.2226.3001.4187">w与who命令对比</a></p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Cris Kou</div><div class="post-copyright__author_desc">千里之行，始于足下</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2025/02/17/Linux%E8%BF%90%E7%BB%B4/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/2025/02/17/Linux%E8%BF%90%E7%BB%B4/')">Linux运维</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2025/02/17/Linux%E8%BF%90%E7%BB%B4/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Linux运维&amp;url=http://example.com/2025/02/17/Linux%E8%BF%90%E7%BB%B4/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Cris Kou的成长日记</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Linux/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Linux<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2025/02/16/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">读书笔记</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zc998800/cdn/face/gif/p113.gif" alt="status"/></div></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#find"><span class="toc-number">1.</span> <span class="toc-text">find</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VIM"><span class="toc-number">2.</span> <span class="toc-text">VIM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">查看文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%83%E9%99%90"><span class="toc-number">4.</span> <span class="toc-text">权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B"><span class="toc-number">5.</span> <span class="toc-text">文件压缩与解压</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%91%BD%E4%BB%A4"><span class="toc-number">6.</span> <span class="toc-text">查找命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#grep"><span class="toc-number">6.1.</span> <span class="toc-text">grep</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#find-1"><span class="toc-number">6.2.</span> <span class="toc-text">find</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#locate"><span class="toc-number">6.3.</span> <span class="toc-text">locate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#whereis"><span class="toc-number">6.4.</span> <span class="toc-text">whereis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#which"><span class="toc-number">6.5.</span> <span class="toc-text">which</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86"><span class="toc-number">7.</span> <span class="toc-text">网络管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E5%90%8D%E9%85%8D%E7%BD%AE"><span class="toc-number">7.1.</span> <span class="toc-text">主机名配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IP%E5%9C%B0%E5%9D%80%E9%85%8D%E7%BD%AE"><span class="toc-number">7.2.</span> <span class="toc-text">IP地址配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%9F%E5%90%8D%E6%98%A0%E5%B0%84"><span class="toc-number">7.3.</span> <span class="toc-text">域名映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4"><span class="toc-number">7.4.</span> <span class="toc-text">常用网络命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ifconfig%EF%BC%88net-tools%E5%A5%97%E4%BB%B6%E4%B8%AD%E5%81%9C%E6%AD%A2%E7%BB%B4%E6%8A%A4%E7%9A%84%E5%91%BD%E4%BB%A4%EF%BC%89"><span class="toc-number">7.4.1.</span> <span class="toc-text">ifconfig（net-tools套件中停止维护的命令）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ip%EF%BC%88iproute2%E5%A5%97%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%91%BD%E4%BB%A4%EF%BC%89"><span class="toc-number">7.4.2.</span> <span class="toc-text">ip（iproute2套件中的命令）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ping"><span class="toc-number">7.4.3.</span> <span class="toc-text">ping</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#route"><span class="toc-number">7.4.4.</span> <span class="toc-text">route</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lsof"><span class="toc-number">7.4.5.</span> <span class="toc-text">lsof</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#netstat"><span class="toc-number">7.4.6.</span> <span class="toc-text">netstat</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ss"><span class="toc-number">7.4.7.</span> <span class="toc-text">ss</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#traceroute"><span class="toc-number">7.4.8.</span> <span class="toc-text">traceroute</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nslookup"><span class="toc-number">7.4.9.</span> <span class="toc-text">nslookup</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tcpdump"><span class="toc-number">7.4.10.</span> <span class="toc-text">tcpdump</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#arp"><span class="toc-number">7.4.11.</span> <span class="toc-text">arp</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1"><span class="toc-number">8.</span> <span class="toc-text">定时任务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E6%AC%A1%E6%80%A7%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1-%E2%80%93-at"><span class="toc-number">8.1.</span> <span class="toc-text">一次性计划任务 – at</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%A8%E6%9C%9F%E6%80%A7%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1-%E2%80%93-crontab"><span class="toc-number">8.2.</span> <span class="toc-text">周期性计划任务 – crontab</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="toc-number">9.</span> <span class="toc-text">进程管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%A6%82%E5%BF%B5"><span class="toc-number">9.1.</span> <span class="toc-text">进程概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">9.2.</span> <span class="toc-text">进程生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8B"><span class="toc-number">9.3.</span> <span class="toc-text">线程和协程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">9.4.</span> <span class="toc-text">进程管理常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ps"><span class="toc-number">9.4.1.</span> <span class="toc-text">ps</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#top"><span class="toc-number">9.4.2.</span> <span class="toc-text">top</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pgrep"><span class="toc-number">9.4.3.</span> <span class="toc-text">pgrep</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pstree"><span class="toc-number">9.4.4.</span> <span class="toc-text">pstree</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#prtstat"><span class="toc-number">9.4.5.</span> <span class="toc-text">prtstat</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#uptime"><span class="toc-number">9.4.6.</span> <span class="toc-text">uptime</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#w-who"><span class="toc-number">9.4.7.</span> <span class="toc-text">w&amp;who</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jobs%E3%80%81fg-bg"><span class="toc-number">9.4.8.</span> <span class="toc-text">jobs、fg&amp;bg</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#kill"><span class="toc-number">9.4.9.</span> <span class="toc-text">kill</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pkill"><span class="toc-number">9.4.10.</span> <span class="toc-text">pkill</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lsof-1"><span class="toc-number">9.4.11.</span> <span class="toc-text">lsof</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">10.</span> <span class="toc-text">防火墙</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/17/Linux%E8%BF%90%E7%BB%B4/" title="Linux运维">Linux运维</a><time datetime="2025-02-17T01:35:17.000Z" title="发表于 2025-02-17 09:35:17">2025-02-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/16/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" title="读书笔记">读书笔记</a><time datetime="2025-02-16T06:26:25.000Z" title="发表于 2025-02-16 14:26:25">2025-02-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/16/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" title="自动化测试">自动化测试</a><time datetime="2025-02-16T01:42:27.000Z" title="发表于 2025-02-16 09:42:27">2025-02-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/15/JMeter-%E5%B7%A5%E5%85%B7/" title="JMeter[工具]">JMeter[工具]</a><time datetime="2025-02-15T05:19:28.000Z" title="发表于 2025-02-15 13:19:28">2025-02-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/15/%E6%B5%8B%E8%AF%95%E7%90%86%E8%AE%BA/" title="测试理论">测试理论</a><time datetime="2025-02-15T02:02:21.000Z" title="发表于 2025-02-15 10:02:21">2025-02-15</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="Cris Kou" target="_blank">Cris Kou</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">0</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Linux/" style="font-size: 0.88rem;">Linux<sup>1</sup></a><a href="/tags/Python%E5%9F%BA%E7%A1%80/" style="font-size: 0.88rem;">Python基础<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 0.88rem;">学习笔记<sup>1</sup></a><a href="/tags/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" style="font-size: 0.88rem;">测试工具<sup>3</sup></a><a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" style="font-size: 0.88rem;">自动化测试<sup>1</sup></a><a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 0.88rem;">读书笔记<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Cris Kou 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
